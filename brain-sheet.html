@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Brain Sheet — Free Healthcare Shift Kit</title>
+<style>
+  * { box-sizing: border-box; }
+  body { font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif; color: #1f2937; line-height: 1.5; margin: 0; padding: 16px; font-size: 13px; }
+  .page { max-width: 210mm; margin: 0 auto; background: #fff; padding: 14mm 16mm; }
+  header { border-bottom: 3px solid #14532d; padding-bottom: 8px; margin-bottom: 14px; }
+  h1 { font-size: 22px; margin: 0 0 3px; color: #14532d; }
+  .subtitle { color: #4b5563; font-size: 12px; margin: 0 0 2px; }
+  .disclaimer { background: #fef3c7; border: 1px solid #d97706; color: #78350f; padding: 7px 10px; border-radius: 5px; font-size: 11px; margin-bottom: 14px; }
+  h2 { font-size: 15px; border-bottom: 1px solid #e5e7eb; padding-bottom: 4px; margin: 18px 0 9px; color: #14532d; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 9px; margin-bottom: 10px; }
+  .field { display: flex; flex-direction: column; gap: 3px; }
+  .field label { font-size: 10.5px; font-weight: 700; color: #374151; text-transform: uppercase; letter-spacing: 0.05em; }
+  input, select, textarea { width: 100%; padding: 5px 7px; border: 1px solid #d1d5db; border-radius: 4px; font-size: 12.5px; background: #fff; font: inherit; }
+  input:focus, textarea:focus { outline: none; border-color: #16a34a; }
+  table { width: 100%; border-collapse: collapse; margin-bottom: 9px; }
+  th, td { border: 1px solid #d1d5db; padding: 5px 7px; font-size: 12px; text-align: left; vertical-align: top; }
+  th { background: #f3f4f6; font-weight: 700; font-size: 11px; }
+  td input, td textarea, td select { width: 100%; padding: 3px 5px; border: none; font-size: 12px; font-family: inherit; background: transparent; }
+  td input:focus { outline: 2px solid #16a34a; border-radius: 2px; }
+  textarea.short { height: 46px; }
+  textarea.med { height: 64px; }
+  .checkboxes { display: flex; flex-wrap: wrap; gap: 12px 18px; margin-bottom: 8px; }
+  .checkbox-item { display: flex; align-items: center; gap: 5px; font-size: 12.5px; }
+  .checkbox-item input { width: auto; flex: none; }
+  .lines { display: grid; grid-template-columns: 1fr 1fr; gap: 8px 16px; margin-bottom: 6px; }
+  .line { border-bottom: 1px solid #9ca3af; padding-bottom: 3px; min-height: 22px; font-size: 12.5px; }
+  .signature { margin-top: 20px; border-top: 1px solid #9ca3af; padding-top: 7px; font-size: 11.5px; color: #4b5563; }
+  .credit { margin-top: 22px; padding-top: 9px; border-top: 1px solid #e5e7eb; font-size: 10.5px; color: #6b7280; text-align: center; line-height: 1.6; }
+  .no-print { margin-bottom: 10px; text-align: center; }
+  .btn { display: inline-block; padding: 6px 14px; background: #14532d; color: #fff; border-radius: 5px; text-decoration: none; font-size: 12.5px; font-weight: 600; border: none; cursor: pointer; }
+  .btn:hover { background: #114324; }
+  @media print {
+    body { background: #fff; padding: 0; font-size: 12px; }
+    .page { max-width: 100%; width: 100%; padding: 14mm 15mm; box-shadow: none; }
+    .no-print { display: none !important; }
+    header { border-bottom-color: #000; }
+    h2 { border-bottom-color: #000; }
+    .disclaimer { background: #fff !important; color: #000 !important; border-color: #000; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    table { page-break-inside: auto; }
+    tr { page-break-inside: avoid; }
+    input, select, textarea { border: 1px solid #000 !important; color: #000 !important; background: #fff !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    input[type=checkbox] { width: 11px; height: 11px; accent-color: #000; }
+    .signature { border-top-color: #000; }
+    .credit { border-top-color: #000; color: #000; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+<header>
+  <h1>Brain Sheet</h1>
+  <p class="subtitle">Shift brain for nurses and healthcare workers &middot; Fill in, print, carry &middot; Education only &mdash; not medical advice</p>
+</header>
+
+<p class="disclaimer"><strong>Education only.</strong> This sheet is an organizational aid for healthcare workers. It is not medical advice, does not replace clinical judgment or facility policy, and does not create a legal patient record. Always follow your employer's protocols and your state's scope-of-practice rules.</p>
+
+<div class="no-print">
+  <button class="btn" onclick="window.print()">Print this sheet</button>
+</div>
+
+<h2>Shift info</h2>
+<div class="grid">
+  <div class="field"><label>Date</label><input type="text"></div>
+  <div class="field"><label>Shift (days / nights / other)</label><input type="text"></div>
+  <div class="field"><label>Unit / ward</label><input type="text"></div>
+  <div class="field"><label>Your name &amp; role</label><input type="text"></div>
+  <div class="field"><label>Offgoing nurse</label><input type="text"></div>
+  <div class="field"><label>Oncoming nurse</label><input type="text"></div>
+  <div class="field"><label>Patient load / assignment</label><input type="text"></div>
+</div>
+
+<h2>Patient snapshot</h2>
+<div class="grid">
+  <div class="field"><label>Patient name</label><input type="text"></div>
+  <div class="field"><label>DOB / age</label><input type="text"></div>
+  <div class="field"><label>MRN</label><input type="text"></div>
+  <div class="field"><label>Room / bed</label><input type="text"></div>
+  <div class="field"><label>Admit date</label><input type="date"></div>
+  <div class="field"><label>Code status</label><input type="text"></div>
+  <div class="field"><label>Allergies</label><input type="text"></div>
+  <div class="field"><label>Isolation / precautions</label><input type="text"></div>
+  <div class="field"><label>Primary language / interpreter</label><input type="text"></div>
+  <div class="field"><label>Fall risk</label><input type="text"></div>
+  <div class="field"><label>Skin / pressure injury risk</label><input type="text"></div>
+</div>
+
+<h2>Admitting diagnosis / reason for admission</h2>
+<textarea class="short" placeholder=""></textarea>
+
+<h2>Past medical history</h2>
+<textarea class="med" placeholder=""></textarea>
+
+<h2>SBAR assessment</h2>
+<div class="grid">
+  <div class="field" style="grid-column: span 2;"><label>Situation — current status, why reporting now</label><textarea class="short" placeholder=""></textarea></div>
+  <div class="field" style="grid-column: span 2;"><label>Background — relevant history, baseline, code status</label><textarea class="short" placeholder=""></textarea></div>
+  <div class="field" style="grid-column: span 2;"><label>Assessment — current findings, changes since last shift</label><textarea class="short" placeholder=""></textarea></div>
+  <div class="field" style="grid-column: span 2;"><label>Recommendation — requested orders, follow-ups, pending consults</label><textarea class="short" placeholder=""></textarea></div>
+</div>
+
+<h2>Vital signs</h2>
+<table>
+  <thead><tr><th style="width:14%">Time</th><th style="width:16%">BP</th><th style="width:12%">HR</th><th style="width:12%">RR</th><th style="width:14%">SpO2</th><th style="width:14%">Temp</th><th>Pain (0&ndash;10)</th></tr></thead>
+  <tbody>
+    <tr><td><input type="time"></td><td><input></td><td><input></td><td><input></td><td><input></td><td><input></td><td><input></td></tr>
+    <tr><td><input type="time"></td><td><input></td><td><input></td><td><input></td><td><input></td><td><input></td><td><input></td></tr>
+    <tr><td><input type="time"></td><td><input></td><td><input></td><td><input></td><td><input></td><td><input></td><td><input></td></tr>
+    <tr><td><input type="time"></td><td><input></td><td><input></td><td><input></td><td><input></td><td><input></td><td><input></td></tr>
+    <tr><td><input type="time"></td><td><input></td><td><input></td><td><input></td><td><input></td><td><input></td><td><input></td></tr>
+  </tbody>
+</table>
+
+<h2>Intake / output (shift)</h2>
+<table>
+  <thead><tr><th style="width:50%">Intake</th><th style="width:50%">Output</th></tr></thead>
+  <tbody>
+    <tr><td><input></td><td><input></td></tr>
+    <tr><td><input></td><td><input></td></tr>
+    <tr><td><input></td><td><input></td></tr>
+    <tr><td><input></td><td><input></td></tr>
+    <tr><td><input></td><td><input></td></tr>
+  </tbody>
+</table>
+
+<h2>Lines, tubes &amp; drains</h2>
+<textarea class="short" placeholder="Central line, PICC, foley, NG, chest tube, wound vac, etc."></textarea>
+
+<h2>IV access</h2>
+<table>
+  <thead><tr><th style="width:20%">Site</th><th style="width:12%">Gauge</th><th style="width:34%">Solution</th><th>Rate</th></tr></thead>
+  <tbody>
+    <tr><td><input></td><td><input></td><td><input></td><td><input></td></tr>
+    <tr><td><input></td><td><input></td><td><input></td><td><input></td></tr>
+    <tr><td><input></td><td><input></td><td><input></td><td><input></td></tr>
+  </tbody>
+</table>
+
+<h2>Medications (scheduled)</h2>
+<table>
+  <thead><tr><th style="width:14%">Time</th><th style="width:34%">Medication</th><th style="width:20%">Dose</th><th style="width:16%">Route</th><th>Given</th></tr></thead>
+  <tbody>
+    <tr><td><input type="time"></td><td><input></td><td><input></td><td><input></td><td><input type="checkbox"></td></tr>
+    <tr><td><input type="time"></td><td><input></td><td><input></td><td><input></td><td><input type="checkbox"></td></tr>
+    <tr><td><input type="time"></td><td><input></td><td><input></td><td><input></td><td><input type="checkbox"></td></tr>
+    <tr><td><input type="time"></td><td><input></td><td><input></td><td><input></td><td><input type="checkbox"></td></tr>
+  </tbody>
+</table>
+
+<h2>PRN medications</h2>
+<table>
+  <thead><tr><th style="width:16%">Medication</th><th style="width:14%">Dose</th><th style="width:14%">Route</th><th style="width:16%">Last given</th><th style="width:16%">Next due</th><th>Given</th></tr></thead>
+  <tbody>
+    <tr><td><input></td><td><input></td><td><input></td><td><input type="time"></td><td><input type="time"></td><td><input type="checkbox"></td></tr>
+    <tr><td><input></td><td><input></td><td><input></td><td><input type="time"></td><td><input type="time"></td><td><input type="checkbox"></td></tr>
+    <tr><td><input></td><td><input></td><td><input></td><td><input type="time"></td><td><input type="time"></td><td><input type="checkbox"></td></tr>
+    <tr><td><input></td><td><input></td><td><input></td><td><input type="time"></td><td><input type="time"></td><td><input type="checkbox"></td></tr>
+  </tbody>
+</table>
+
+<h2>Labs / results pending</h2>
+<div class="lines"><div class="line">1. </div><div class="line">2. </div><div class="line">3. </div></div>
+
+<h2>To-do before end of shift</h2>
+<div class="checkboxes">
+  <div class="checkbox-item"><input type="checkbox" id="t1"><label for="t1">Meds given &amp; documented</label></div>
+  <div class="checkbox-item"><input type="checkbox" id="t2"><label for="t2">Labs drawn / specimens sent</label></div>
+  <div class="checkbox-item"><input type="checkbox" id="t3"><label for="t3">Family updated</label></div>
+  <div class="checkbox-item"><input type="checkbox" id="t4"><label for="t4">New orders transcribed</label></div>
+  <div class="checkbox-item"><input type="checkbox" id="t5"><label for="t5">Pending consults noted</label></div>
+  <div class="checkbox-item"><input type="checkbox" id="t6"><label for="t6">Discharge planning started</label></div>
+  <div class="checkbox-item"><input type="checkbox" id="t7"><label for="t7">Fall / skin risk current</label></div>
+  <div class="checkbox-item"><input type="checkbox" id="t8"><label for="t8">Isolation signage correct</label></div>
+</div>
+
+<h2>Oncoming nurse notes &amp; questions</h2>
+<div class="lines"><div class="line">1. </div><div class="line">2. </div><div class="line">3. </div><div class="line">4. </div></div>
+
+<div class="signature">
+  Report given by: ____________________&nbsp;&nbsp;Time: __________&nbsp;&nbsp;Report received by: ____________________
+</div>
+
+<div class="credit">
+  <strong>Credit:</strong> Free Healthcare Shift Kit &mdash; created and published by Asdale Dynamics, LLC (Indiana, formed October 2026). Dylan Asdale, RN &mdash; author of <em>The Massive AI Manual</em> and dylanasdale.github.io. MIT License &middot; Copyright (c) 2026 Asdale Dynamics, LLC &middot; Education only &mdash; not medical advice.
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Medication Log — Free Healthcare Shift Kit</title>
+<style>
+  * { box-sizing: border-box; }
+  body { font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif; color: #1f2937; line-height: 1.5; margin: 0; padding: 16px; font-size: 13px; }
+  .page { max-width: 210mm; margin: 0 auto; background: #fff; padding: 14mm 16mm; }
+  header { border-bottom: 3px solid #14532d; padding-bottom: 8px; margin-bottom: 14px; }
+  h1 { font-size: 22px; margin: 0 0 3px; color: #14532d; }
+  .subtitle { color: #4b5563; font-size: 12px; margin: 0 0 2px; }
+  .disclaimer { background: #fef3c7; border: 1px solid #d97706; color: #78350f; padding: 7px 10px; border-radius: 5px; font-size: 11px; margin-bottom: 14px; }
+  h2 { font-size: 15px; border-bottom: 1px solid #e5e7eb; padding-bottom: 4px; margin: 18px 0 9px; color: #14532d; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 9px; margin-bottom: 10px; }
+  .field { display: flex; flex-direction: column; gap: 3px; }
+  .field label { font-size: 10.5px; font-weight: 700; color: #374151; text-transform: uppercase; letter-spacing: 0.05em; }
+  input, select, textarea { width: 100%; padding: 5px 7px; border: 1px solid #d1d5db; border-radius: 4px; font-size: 12.5px; background: #fff; font: inherit; }
+  input:focus, textarea:focus { outline: none; border-color: #16a34a; }
+  table { width: 100%; border-collapse: collapse; margin-bottom: 9px; }
+  th, td { border: 1px solid #d1d5db; padding: 5px 7px; font-size: 12px; text-align: left; vertical-align: top; }
+  th { background: #f3f4f6; font-weight: 700; font-size: 11px; }
+  td input, td textarea, td select { width: 100%; padding: 3px 5px; border: none; font-size: 12px; font-family: inherit; background: transparent; }
+  td input:focus { outline: 2px solid #16a34a; border-radius: 2px; }
+  textarea.short { height: 46px; }
+  .lines { display: grid; grid-template-columns: 1fr 1fr; gap: 8px 16px; margin-bottom: 6px; }
+  .line { border-bottom: 1px solid #9ca3af; padding-bottom: 3px; min-height: 22px; font-size: 12.5px; }
+  .signature { margin-top: 20px; border-top: 1px solid #9ca3af; padding-top: 7px; font-size: 11.5px; color: #4b5563; }
+  .credit { margin-top: 22px; padding-top: 9px; border-top: 1px solid #e5e7eb; font-size: 10.5px; color: #6b7280; text-align: center; line-height: 1.6; }
+  .no-print { margin-bottom: 10px; text-align: center; }
+  .btn { display: inline-block; padding: 6px 14px; background: #14532d; color: #fff; border-radius: 5px; text-decoration: none; font-size: 12.5px; font-weight: 600; border: none; cursor: pointer; }
+  .btn:hover { background: #114324; }
+  @media print {
+    body { background: #fff; padding: 0; font-size: 12px; }
+    .page { max-width: 100%; width: 100%; padding: 14mm 15mm; box-shadow: none; }
+    .no-print { display: none !important; }
+    header { border-bottom-color: #000; }
+    h2 { border-bottom-color: #000; }
+    .disclaimer { background: #fff !important; color: #000 !important; border-color: #000; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    table { page-break-inside: auto; }
+    tr { page-break-inside: avoid; }
+    input, select, textarea { border: 1px solid #000 !important; color: #000 !important; background: #fff !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    input[type=checkbox] { width: 11px; height: 11px; accent-color: #000; }
+    .signature { border-top-color: #000; }
+    .credit { border-top-color: #000; color: #000; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+<header>
+  <h1>Medication Log</h1>
+  <p class="subtitle">Medication administration log &middot; Fill in, print, carry &middot; Education only &mdash; not medical advice</p>
+</header>
+
+<p class="disclaimer"><strong>Education only.</strong> This sheet is an organizational aid for healthcare workers. It is not medical advice, does not replace clinical judgment or facility policy, and does not create a legal patient record. Always follow your employer's protocols and your state's scope-of-practice rules. Document administrations immediately after giving medication and follow the rights of medication administration.</p>
+
+<div class="no-print">
+  <button class="btn" onclick="window.print()">Print this sheet</button>
+</div>
+
+<h2>Shift info</h2>
+<div class="grid">
+  <div class="field"><label>Date</label><input type="text"></div>
+  <div class="field"><label>Shift (days / nights / other)</label><input type="text"></div>
+  <div class="field"><label>Unit / ward</label><input type="text"></div>
+  <div class="field"><label>Nurse name &amp; role</label><input type="text"></div>
+  <div class="field"><label>Patient load / assignment</label><input type="text"></div>
+</div>
+
+<h2>Medication administrations</h2>
+<table>
+  <thead><tr><th style="width:10%">Time</th><th style="width:14%">Patient / room</th><th style="width:20%">Medication</th><th style="width:12%">Dose</th><th style="width:12%">Route</th><th style="width:14%">Given by</th><th>Initials</th></tr></thead>
+  <tbody>
+    <tr><td><input type="time"></td><td><input></td><td><input></td><td><input></td><td><input></td><td><input></td><td><input></td></tr>
+    <tr><td><input type="time"></td><td><input></td><td><input></td><td><input></td><td><input></td><td><input></td><td><input></td></tr>
+    <tr><td><input type="time"></td><td><input></td><td><input></td><td><input></td><td><input></td><td><input></td><td><input></td></tr>
+    <tr><td><input type="time"></td><td><input></td><td><input></td><td><input></td><td><input></td><td><input></td><td><input></td></tr>
+    <tr><td><input type="time"></td><td><input></td><td><input></td><td><input></td><td><input></td><td><input></td><td><input></td></tr>
+    <tr><td><input type="time"></td><td><input></td><td><input></td><td><input></td><td><input></td><td><input></td><td><input></td></tr>
+    <tr><td><input type="time"></td><td><input></td><td><input></td><td><input></td><td><input></td><td><input></td><td><input></td></tr>
+    <tr><td><input type="time"></td><td><input></td><td><input></td><td><input></td><td><input></td><td><input></td><td><input></td></tr>
+    <tr><td><input type="time"></td><td><input></td><td><input></td><td><input></td><td><input></td><td><input></td><td><input></td></tr>
+    <tr><td><input type="time"></td><td><input></td><td><input></td><td><input></td><td><input></td><td><input></td><td><input></td></tr>
+  </tbody>
+</table>
+
+<h2>PRN (as-needed) administrations</h2>
+<table>
+  <thead><tr><th style="width:10%">Time</th><th style="width:14%">Patient / room</th><th style="width:20%">Medication</th><th style="width:12%">Dose</th><th style="width:12%">Route</th><th style="width:16%">Reason</th><th>Initials</th></tr></thead>
+  <tbody>
+    <tr><td><input type="time"></td><td><input></td><td><input></td><td><input></td><td><input></td><td><input></td><td><input></td></tr>
+    <tr><td><input type="time"></td><td><input></td><td><input></td><td><input></td><td><input></td><td><input></td><td><input></td></tr>
+    <tr><td><input type="time"></td><td><input></td><td><input></td><td><input></td><td><input></td><td><input></td><td><input></td></tr>
+    <tr><td><input type="time"></td><td><input></td><td><input></td><td><input></td><td><input></td><td><input></td><td><input></td></tr>
+    <tr><td><input type="time"></td><td><input></td><td><input></td><td><input></td><td><input></td><td><input></td><td><input></td></tr>
+  </tbody>
+</table>
+
+<h2>Medication concerns / follow-ups</h2>
+<div class="lines"><div class="line">1. </div><div class="line">2. </div><div class="line">3. </div></div>
+
+<h2>Controlled substance waste witnessed</h2>
+<table>
+  <thead><tr><th style="width:14%">Time</th><th style="width:30%">Medication</th><th style="width:16%">Amount wasted</th><th>Witness initials</th></tr></thead>
+  <tbody>
+    <tr><td><input type="time"></td><td><input></td><td><input></td><td><input></td></tr>
+    <tr><td><input type="time"></td><td><input></td><td><input></td><td><input></td></tr>
+    <tr><td><input type="time"></td><td><input></td><td><input></td><td><input></td></tr>
+  </tbody>
+</table>
+
+<h2>Shift totals</h2>
+<div class="grid">
+  <div class="field"><label>Total scheduled doses given</label><input type="text"></div>
+  <div class="field"><label>Total PRN doses given</label><input type="text"></div>
+  <div class="field"><label>Omissions / variances (explain in notes)</label><input type="text"></div>
+</div>
+
+<div class="signature">
+  Nurse signature: ____________________&nbsp;&nbsp;Time: __________<br>
+  Charge nurse review: ____________________&nbsp;&nbsp;Time: __________
+</div>
+
+<p class="no-print"><small>Document administrations immediately after giving medication. Follow your facility's medication administration policy and the rights of medication administration. This log is an organizational aid, not a legal medical record.</small></p>
+
+<div class="credit">
+  <strong>Credit:</strong> Free Healthcare Shift Kit &mdash; created and published by Asdale Dynamics, LLC (Indiana, formed October 2026). Dylan Asdale, RN &mdash; author of <em>The Massive AI Manual</em> and dylanasdale.github.io. MIT License &middot; Copyright (c) 2026 Asdale Dynamics, LLC &middot; Education only &mdash; not medical advice.
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CE Tracker — Free Healthcare Shift Kit</title>
+<style>
+  * { box-sizing: border-box; }
+  body { font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif; color: #1f2937; line-height: 1.5; margin: 0; padding: 16px; font-size: 13px; }
+  .page { max-width: 210mm; margin: 0 auto; background: #fff; padding: 14mm 16mm; }
+  header { border-bottom: 3px solid #14532d; padding-bottom: 8px; margin-bottom: 14px; }
+  h1 { font-size: 22px; margin: 0 0 3px; color: #14532d; }
+  .subtitle { color: #4b5563; font-size: 12px; margin: 0 0 2px; }
+  .disclaimer { background: #fef3c7; border: 1px solid #d97706; color: #78350f; padding: 7px 10px; border-radius: 5px; font-size: 11px; margin-bottom: 14px; }
+  h2 { font-size: 15px; border-bottom: 1px solid #e5e7eb; padding-bottom: 4px; margin: 18px 0 9px; color: #14532d; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 9px; margin-bottom: 10px; }
+  .field { display: flex; flex-direction: column; gap: 3px; }
+  .field label { font-size: 10.5px; font-weight: 700; color: #374151; text-transform: uppercase; letter-spacing: 0.05em; }
+  input, select, textarea { width: 100%; padding: 5px 7px; border: 1px solid #d1d5db; border-radius: 4px; font-size: 12.5px; background: #fff; font: inherit; }
+  input:focus, textarea:focus { outline: none; border-color: #16a34a; }
+  table { width: 100%; border-collapse: collapse; margin-bottom: 9px; }
+  th, td { border: 1px solid #d1d5db; padding: 5px 7px; font-size: 12px; text-align: left; vertical-align: top; }
+  th { background: #f3f4f6; font-weight: 700; font-size: 11px; }
+  td input, td textarea, td select { width: 100%; padding: 3px 5px; border: none; font-size: 12px; font-family: inherit; background: transparent; }
+  td input:focus { outline: 2px solid #16a34a; border-radius: 2px; }
+  textarea.short { height: 46px; }
+  .checkboxes { display: flex; flex-wrap: wrap; gap: 12px 18px; margin-bottom: 8px; }
+  .checkbox-item { display: flex; align-items: center; gap: 5px; font-size: 12.5px; }
+  .checkbox-item input { width: auto; flex: none; }
+  .lines { display: grid; grid-template-columns: 1fr 1fr; gap: 8px 16px; margin-bottom: 6px; }
+  .line { border-bottom: 1px solid #9ca3af; padding-bottom: 3px; min-height: 22px; font-size: 12.5px; }
+  .signature { margin-top: 20px; border-top: 1px solid #9ca3af; padding-top: 7px; font-size: 11.5px; color: #4b5563; }
+  .credit { margin-top: 22px; padding-top: 9px; border-top: 1px solid #e5e7eb; font-size: 10.5px; color: #6b7280; text-align: center; line-height: 1.6; }
+  .no-print { margin-bottom: 10px; text-align: center; }
+  .btn { display: inline-block; padding: 6px 14px; background: #14532d; color: #fff; border-radius: 5px; text-decoration: none; font-size: 12.5px; font-weight: 600; border: none; cursor: pointer; }
+  .btn:hover { background: #114324; }
+  .total { font-weight: 700; }
+  @media print {
+    body { background: #fff; padding: 0; font-size: 12px; }
+    .page { max-width: 100%; width: 100%; padding: 14mm 15mm; box-shadow: none; }
+    .no-print { display: none !important; }
+    header { border-bottom-color: #000; }
+    h2 { border-bottom-color: #000; }
+    .disclaimer { background: #fff !important; color: #000 !important; border-color: #000; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    table { page-break-inside: auto; }
+    tr { page-break-inside: avoid; }
+    input, select, textarea { border: 1px solid #000 !important; color: #000 !important; background: #fff !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    input[type=checkbox] { width: 11px; height: 11px; accent-color: #000; }
+    .signature { border-top-color: #000; }
+    .credit { border-top-color: #000; color: #000; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+<header>
+  <h1>CE (Continuing Education) Tracker</h1>
+  <p class="subtitle">Continuing education tracker &middot; Fill in, print, carry &middot; Education only &mdash; not medical advice</p>
+</header>
+
+<p class="disclaimer"><strong>Education only.</strong> This sheet is an organizational aid for healthcare workers. It is not medical advice, does not replace clinical judgment or facility policy, and does not create a legal patient record. Always follow your employer's protocols and your state's scope-of-practice rules. Accepted CE providers and hour counts vary by state board of nursing.</p>
+
+<div class="no-print">
+  <button class="btn" onclick="window.print()">Print this sheet</button>
+</div>
+
+<h2>License info</h2>
+<div class="grid">
+  <div class="field"><label>License type</label><input type="text"></div>
+  <div class="field"><label>License number</label><input type="text"></div>
+  <div class="field"><label>State</label><input type="text"></div>
+  <div class="field"><label>Renewal deadline</label><input type="text"></div>
+  <div class="field"><label>CE hours required</label><input type="text"></div>
+  <div class="field"><label>Hours completed</label><input type="text"></div>
+  <div class="field"><label>Hours still needed</label><input type="text"></div>
+</div>
+
+<h2>CE courses &amp; activities</h2>
+<table>
+  <thead><tr><th style="width:12%">Date</th><th style="width:26%">Course / activity</th><th style="width:16%">Provider</th><th style="width:16%">Topic</th><th style="width:10%">Hours</th><th style="width:12%">Cost</th><th>Proof saved?</th></tr></thead>
+  <tbody>
+    <tr><td><input type="date"></td><td><input></td><td><input></td><td><input></td><td><input></td><td><input></td><td><input type="checkbox"></td></tr>
+    <tr><td><input type="date"></td><td><input></td><td><input></td><td><input></td><td><input></td><td><input></td><td><input type="checkbox"></td></tr>
+    <tr><td><input type="date"></td><td><input></td><td><input></td><td><input></td><td><input></td><td><input></td><td><input type="checkbox"></td></tr>
+    <tr><td><input type="date"></td><td><input></td><td><input></td><td><input></td><td><input></td><td><input></td><td><input type="checkbox"></td></tr>
+    <tr><td><input type="date"></td><td><input></td><td><input></td><td><input></td><td><input></td><td><input></td><td><input type="checkbox"></td></tr>
+    <tr><td><input type="date"></td><td><input></td><td><input></td><td><input></td><td><input></td><td><input></td><td><input type="checkbox"></td></tr>
+    <tr><td><input type="date"></td><td><input></td><td><input></td><td><input></td><td><input></td><td><input></td><td><input type="checkbox"></td></tr>
+    <tr><td><input type="date"></td><td><input></td><td><input></td><td><input></td><td><input></td><td><input></td><td><input type="checkbox"></td></tr>
+    <tr><td><input type="date"></td><td><input></td><td><input></td><td><input></td><td><input></td><td><input></td><td><input type="checkbox"></td></tr>
+    <tr><td><input type="date"></td><td><input></td><td><input></td><td><input></td><td><input></td><td><input></td><td><input type="checkbox"></td></tr>
+    <tr><td><input type="date"></td><td><input></td><td><input></td><td><input></td><td><input></td><td><input></td><td><input type="checkbox"></td></tr>
+  </tbody>
+</table>
+
+<h2>Certifications (BLS, ACLS, PALS, etc.)</h2>
+<table>
+  <thead><tr><th style="width:20%">Certification</th><th style="width:20%">Expiration date</th><th style="width:20%">Renewal due</th><th>Notes</th></tr></thead>
+  <tbody>
+    <tr><td><input></td><td><input type="date"></td><td><input type="date"></td><td><input></td></tr>
+    <tr><td><input></td><td><input type="date"></td><td><input type="date"></td><td><input></td></tr>
+    <tr><td><input></td><td><input type="date"></td><td><input type="date"></td><td><input></td></tr>
+  </tbody>
+</table>
+
+<h2>CE budget &amp; tracking</h2>
+<div class="grid">
+  <div class="field"><label>Annual CE budget</label><input type="text"></div>
+  <div class="field"><label>Spent to date</label><input type="text"></div>
+  <div class="field"><label>Remaining</label><input type="text"></div>
+  <div class="field"><label>Preferred providers</label><input type="text"></div>
+</div>
+
+<h2>Notes</h2>
+<div class="lines"><div class="line">1. </div><div class="line">2. </div><div class="line">3. </div></div>
+
+<p><small>Track hours as you complete them. Keep this sheet with your licensing documents so renewal paperwork is ready when your deadline arrives. Check your state board of nursing requirements &mdash; accepted providers and hour counts vary by state.</small></p>
+
+<div class="credit">
+  <strong>Credit:</strong> Free Healthcare Shift Kit &mdash; created and published by Asdale Dynamics, LLC (Indiana, formed October 2026). Dylan Asdale, RN &mdash; author of <em>The Massive AI Manual</em> and dylanasdale.github.io. MIT License &middot; Copyright (c) 2026 Asdale Dynamics, LLC &middot; Education only &mdash; not medical advice.
+</div>
+</div>
+</body>
+</html>
